@@ -1,0 +1,69 @@
+class Mahasiswa:  #Mendefinisikan kelas Mahasiswa
+    def __init__(self, nama, nim, jurusan): #Fungsi ini adalah constructor (pembangun) yang digunakan untuk menginisialisasi objek
+        self.nama = nama  #Menginisialisasi atribut
+        self.nim = nim   #Menginisialisasi atribut
+        self.jurusan = jurusan   #Menginisialisasi atribut
+
+    def tampilkan_info(self):   #untuk mencetak informasi nama, nim, dan nama jurusan mahasiswa.
+        print("Nama: ", self.nama)
+        print("NIM: ", self.nim)
+        print("Jurusan: ", self.jurusan.NamaJurusan)
+
+
+class Jurusan:  #Mendefinisikan kelas Jurusan
+    def __init__(self, nama_jurusan): #Fungsi ini adalah constructor (pembangun) yang digunakan untuk menginisialisasi objek
+        self.NamaJurusan = nama_jurusan #Menginisialisasi atribut NamaJurusan pada objek 
+        self.DaftarMahasiswa = []   #Menginisialisasi atribut DaftarMahasiswa pada objek 
+
+    def tambah_mahasiswa(self, mahasiswa): #untuk menambahkan objek Mahasiswa ke dalam DaftarMahasiswa pada objek Jurusan.
+        self.DaftarMahasiswa.append(mahasiswa)
+
+    def tampilkan_daftar_mahasiswa(self): #untuk mencetak daftar mahasiswa yang terdaftar dalam objek Jurusan
+        print("Daftar Mahasiswa di Jurusan", self.NamaJurusan)
+        for mahasiswa in self.DaftarMahasiswa:
+            mahasiswa.tampilkan_info()
+
+
+class Universitas: #Mendefinisikan kelas Universitas.
+    def __init__(self, nama_universitas): #Fungsi ini adalah constructor (pembangun) yang digunakan untuk menginisialisasi objek
+        self.NamaUniversitas = nama_universitas
+        self.DaftarJurusan = []
+
+    def tambah_jurusan(self, jurusan):
+        self.DaftarJurusan.append(jurusan) #Menambahkan objek jurusan ke dalam atribut DaftarJurusan pada objek Universitas menggunakan metode append().
+
+    def tampilkan_daftar_jurusan(self): #Mendefinisikan metode tampilkan_daftar_jurusan yang menerima parameter self.
+        print("Daftar Jurusan di Universitas", self.NamaUniversitas) #Mencetak judul "Daftar Jurusan di Universitas" diikuti dengan nama universitas yang disimpan dalam atribut NamaUniversitas pada objek Universitas.
+        for jurusan in self.DaftarJurusan: #Memulai loop for untuk setiap objek jurusan dalam daftar jurusan DaftarJurusan.
+            print(jurusan.NamaJurusan) # Mencetak nama jurusan (NamaJurusan) dari setiap objek jurusan dalam daftar.
+
+
+# Membuat objek Universitas
+universitas_xyz = Universitas("XYZ University")
+
+# Membuat objek Jurusan
+teknik_informatika = Jurusan("Teknik Informatika")
+teknik_mesin = Jurusan("Teknik Mesin")
+teknik_sipil = Jurusan("Teknik Sipil")
+
+# Menambahkan objek Jurusan ke dalam objek Universitas
+universitas_xyz.tambah_jurusan(teknik_informatika,)
+universitas_xyz.tambah_jurusan(teknik_mesin)
+universitas_xyz.tambah_jurusan(teknik_sipil)
+
+
+# Membuat objek Mahasiswa
+mahasiswa1 = Mahasiswa("Apri Agriansyah", "G1A022056", teknik_informatika)
+mahasiswa2 = Mahasiswa("JULIA", "G1A022045", teknik_informatika)
+mahasiswa3 = Mahasiswa("Dimas", "G1A022043", teknik_informatika)
+
+# Menambahkan objek Mahasiswa ke dalam objek Jurusan
+teknik_informatika.tambah_mahasiswa(mahasiswa1)
+teknik_informatika.tambah_mahasiswa(mahasiswa2)
+teknik_informatika.tambah_mahasiswa(mahasiswa3)
+
+# Menampilkan daftar jurusan di Universitas XYZ
+universitas_xyz.tampilkan_daftar_jurusan()
+
+# Menampilkan daftar mahasiswa di Jurusan Teknik Informatika di Universitas XYZ
+teknik_informatika.tampilkan_daftar_mahasiswa()
